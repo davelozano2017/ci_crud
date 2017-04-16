@@ -30,8 +30,15 @@ class model extends CI_Model
 	public function CreateUser($data)
 	{
 
-		$result = $this->db->insert('ci_members_tbl',$data);
-		return $result;
+		$check =  $this->db->select('lastname')->from('ci_members_tbl')->where(array('lastname' => $data['lastname']))->get();
+		if($check->num_rows() > 0){
+			$this->session->set_flashdata('notification','duplicated');
+			return $check;
+		} else {
+			$result = $this->db->insert('ci_members_tbl',$data);
+			$this->session->set_flashdata('notification','success');
+			return $result;
+		}
 
 	}
 
@@ -40,6 +47,7 @@ class model extends CI_Model
 
 		$this->db->where(['id'=>$id]);
 		$result = $this->db->update('ci_members_tbl',$data);
+		$this->session->set_flashdata('notification','update');
 		return $result;
 		
 	}
@@ -49,6 +57,7 @@ class model extends CI_Model
 
 		$this->db->where(['id' => $id]);
 		$result = $this->db->delete('ci_members_tbl');
+		$this->session->set_flashdata('notification','delete');
 		return $result;
 
 	}

@@ -1,31 +1,11 @@
   <div class="col-md-12">
-  <?php 
-  if($this->session->flashdata('errors')):
-  echo '<div class="alert alert-danger">'.$this->session->flashdata('errors').'</div>';
-  endif;
-
-  if(isset($_SESSION['notification'])):
-    switch ($_SESSION['notification'])
-    {
-
-      case 'success':
-        echo '<div class="alert alert-info">Successfully Added.</div>';
-      break;
-
-      case 'delete':
-        echo '<div class="alert alert-danger">Successfully Deleted.</div>';
-      break;
-
-      case 'update':
-        echo '<div class="alert alert-success">Successfully Updated.</div>';
-      break;
-
-      default:
-      break;
-
-    }
-  endif;
-  ?>
+<?php 
+include 'notification-system.php';
+$message = $this->session->flashdata('errors');
+if($message):
+echo '<div class="alert alert-danger">'.$message.'</div>';
+endif;
+?>
       <form method="POST" action="<?php echo base_url()?>execute/insert">
         <div class="form-group">
           <label for="exampleInputEmail1">Last Name</label>
@@ -79,14 +59,15 @@
   </div>
 <script type="text/javascript">
   function modify(action,id)
-  {
+  { 
+    var url = '<?php echo base_url()?>';
     if(action == 'delete')
     {
-      window.location.href='<?php echo base_url()?>execute/'+action+'/'+id;
+      window.location.href= url+'execute/'+action+'/'+id;
     }
     if(action == 'edit')
     {
-      window.location.href='<?php echo base_url()?>execute/'+action+'/'+id;
+      window.location.href= url+'execute/'+action+'/'+id;
     }
   }
 </script>

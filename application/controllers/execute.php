@@ -13,7 +13,8 @@ class execute extends CI_Controller
 	}
 
 	public function insert()
-	{
+	{	
+		
 		$required = 'trim|required|regex_match[/^([a-zA-Z]|\s)+$/]|xss_clean';
 		$this->form_validation->set_rules('lastname','Last Name',$required);
 		$this->form_validation->set_rules('firstname','First Name',$required);
@@ -27,15 +28,14 @@ class execute extends CI_Controller
 			redirect('home','refresh');
 
 		}
-		
+
 		$data = array(
 			'lastname' 		=> $this->input->post('lastname'),
 			'firstname' 	=> $this->input->post('firstname'),
 			'middlename' 	=> $this->input->post('middlename')
 			);
-
+		
 		$result = $this->model->CreateUser($data);
-		$this->session->set_flashdata('notification','success');
 		if($result) 
 		{
 			redirect('home','refresh');
@@ -47,7 +47,6 @@ class execute extends CI_Controller
 	{
 
 		$result = $this->model->DeleteUser($id);
-		$this->session->set_flashdata('notification','delete');
 		if($result)
 		{
 			redirect('home','refresh');
@@ -88,7 +87,6 @@ class execute extends CI_Controller
 			);
 
 		$result = $this->model->UpdateUsers($data,$id);
-		$this->session->set_flashdata('notification','update');
 		if($result)
 		{
 			redirect('home','refresh');
