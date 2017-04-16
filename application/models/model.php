@@ -30,7 +30,10 @@ class model extends CI_Model
 	public function CreateUser($data)
 	{
 
-		$check =  $this->db->select('lastname')->from('ci_members_tbl')->where(array('lastname' => $data['lastname']))->get();
+		$check =  $this->db->select('lastname')
+						   ->from('ci_members_tbl')
+						   ->where(array('lastname' => $data['lastname']))
+						   ->get();
 		if($check->num_rows() > 0){
 			$this->session->set_flashdata('notification','duplicated');
 			return $check;

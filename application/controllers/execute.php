@@ -54,15 +54,23 @@ class execute extends CI_Controller
 
 	}
 
-	public function edit($id)
+	public static function edit($id)
 	{
 
-		$id = $this->uri->segment(3);
-		$data['result'] = $this->model->GetId($id);
-		$this->load->view('template/header/header');
-		$this->load->view('template/edit',$data);
-		$this->load->view('template/footer/footer');
-
+		if(isset($this->$id) != '')
+		{
+			redirect('home','refresh');
+		} 
+		else
+		{
+		
+			$id = $this->uri->segment(3);
+			$data['result'] = $this->model->GetId($id);
+			$this->load->view('template/header/header');
+			$this->load->view('template/edit',$data);
+			$this->load->view('template/footer/footer');
+		
+		}
 	}
 
 	public function update($id)
