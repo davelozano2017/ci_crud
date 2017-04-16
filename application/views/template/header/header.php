@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Crud using Codeigniter</title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/fonts/font-awesome/css/font-awesome.min.css">
 </head>
 <body>

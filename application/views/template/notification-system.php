@@ -18,7 +18,7 @@
       break;
 
       case 'duplicated':
-        echo '<div class="alert alert-warning"><i class="fa fa-remove"></i> Lastname is already exist.</div>';
+        echo '<div class="alert alert-warning"><i class="fa fa-refresh"></i> Username is already exist.</div>';
       break;
 
       default:

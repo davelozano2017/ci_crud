@@ -19,6 +19,21 @@ if($errors): echo '<div class="alert alert-danger">'.$errors.'</div>'; endif;
         </div>
 
         <div class="form-group">
+          <label for="exampleInputEmail1">Username</label>
+          <input type="text" class="form-control" name="username">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Password</label>
+          <input type="text" class="form-control" name="password">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Confirm Password</label>
+          <input type="text" class="form-control" name="cpassword">
+        </div>
+
+        <div class="form-group">
           <label for="exampleInputEmail1"></label>
           <button type="submit" class="btn btn-primary btn-flat">Submit</button>
         </div>
@@ -33,6 +48,7 @@ if($errors): echo '<div class="alert alert-danger">'.$errors.'</div>'; endif;
             <th>Last Name</th>
             <th>First Name</th>
             <th>Middle Name</th>
+            <th>Username</th>
             <th>Action</th>
           </thead>
           <tbody>
@@ -43,6 +59,7 @@ if($errors): echo '<div class="alert alert-danger">'.$errors.'</div>'; endif;
             <td><?php echo $row->lastname?></td>
             <td><?php echo $row->firstname?></td>
             <td><?php echo $row->middlename?></td>
+            <td><?php echo $row->username?></td>
             <td>
               <a href="#" onClick="modify('<?php echo $url?>','edit/','<?php echo $row->id?>')" class="btn btn-primary">Edit</a>
               <a href="#" onClick="modify('<?php echo $url?>','delete/','<?php echo $row->id?>')" class="btn btn-danger">Delete</a>

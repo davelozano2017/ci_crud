@@ -22,12 +22,18 @@ class execute extends CI_Controller
 
 	public function insert()
 	{
-		$a = array('lastname','firstname','middlename');
-		$b = array('Last Name','First Name','Middle Name','trim|required|regex_match[/^([a-zA-Z]|\s)+$/]|xss_clean');
-		$this->validate($a[0],$b[0],$b[3]);
-		$this->validate($a[1],$b[1],$b[3]);
-		$this->validate($a[2],$b[2],$b[3]);
-
+		$a = array('lastname','firstname','middlename','username','password','cpassword');
+		$b = array('Last Name', 'First Name', 'Middle Name', 'Username', 'Password','Confirm Password');
+		$complete = 'trim|required|regex_match[/^([a-zA-Z]|\s)+$/]|xss_clean';
+		$tingi = 'trim|required|xss_clean';
+		$match = 'trim|required|xss_clean|matches[password]';
+		$this->validate($a[0],$b[0],$complete);
+		$this->validate($a[1],$b[1],$complete);
+		$this->validate($a[2],$b[2],$complete);
+		$this->validate($a[3],$b[3],$tingi);
+		$this->validate($a[4],$b[4],$tingi);
+		$this->validate($a[5],$b[5],$match);
+		
 		if($this->form_validation->run() == FALSE)
 		{
 			$data = array('errors' => validation_errors(' <i class="fa fa-remove"></i> '));
@@ -37,7 +43,9 @@ class execute extends CI_Controller
 		$data = array(
 			$a[0] => $this->pasa($a[0]),
 			$a[1] => $this->pasa($a[1]),
-			$a[2] => $this->pasa($a[2])
+			$a[2] => $this->pasa($a[2]),
+			$a[3] => $this->pasa($a[3]),
+			$a[4] => $this->bcrypt->hash_password($a[4])
 			);
 
 		$result = $this->model->CreateUsers($data);
@@ -63,12 +71,15 @@ class execute extends CI_Controller
 	public function update($id)
 	{
 
-		$a = array('lastname','firstname','middlename');
-		$b = array('Last Name','First Name','Middle Name','trim|required|regex_match[/^([a-zA-Z]|\s)+$/]|xss_clean');
-
-		$this->validate($a[0],$b[0],$b[3]);
-		$this->validate($a[1],$b[1],$b[3]);
-		$this->validate($a[2],$b[2],$b[3]);
+		$a = array('lastname','firstname','middlename','username');
+		$b = array('Last Name', 'First Name', 'Middle Name', 'Username');
+		$complete = 'trim|required|regex_match[/^([a-zA-Z]|\s)+$/]|xss_clean';
+		$complete = 'trim|required|regex_match[/^([a-zA-Z]|\s)+$/]|xss_clean';
+		$tingi = 'trim|required|xss_clean';
+		$this->validate($a[0],$b[0],$complete);
+		$this->validate($a[1],$b[1],$complete);
+		$this->validate($a[2],$b[2],$complete);
+		$this->validate($a[3],$b[3],$tingi);
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -80,7 +91,8 @@ class execute extends CI_Controller
 		$data = array(
 			$a[0] => $this->pasa($a[0]),
 			$a[1] => $this->pasa($a[1]),
-			$a[2] => $this->pasa($a[2])
+			$a[2] => $this->pasa($a[2]),
+			$a[3] => $this->pasa($a[3])
 			);
 
 		$result = $this->model->UpdateUsers($data,$id);

@@ -20,6 +20,11 @@ if($errors): echo '<div class="alert alert-danger">'.$errors.'</div>'; endif;
           <input type="text" class="form-control" name="middlename" value="<?php echo$middlename?>">
         </div>
 
+       <div class="form-group">
+          <label for="exampleInputEmail1">Middle Name</label>
+          <input type="text" class="form-control" name="username" value="<?php echo$username?>">
+        </div>
+
         <div class="form-group">
           <label for="exampleInputEmail1"></label>
           <button type="submit" class="btn btn-primary btn-flat">Save Changes</button>
