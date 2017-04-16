@@ -1,6 +1,5 @@
 <div class="col-md-12">
-<?php 
-include 'notification-system.php';
+<?php include 'notification-system.php';
 $errors = $this->session->flashdata('errors');
 if($errors):
 echo '<div class="alert alert-danger">'.$errors.'</div>';
@@ -59,26 +58,4 @@ endif;
       </div>
   </div>
 
-  <script type="text/javascript">
-      
-      function modify($url,$action,$id)
-      {
-
-        var url = $url;
-        var action = $action;
-        var id = $id;
-          switch (action)
-          {
-            case action:
-              location.href = url + action + id;
-            break;
-            
-            case action:
-              location.href = url + action + id;
-            break;
-          }
-
-      } 
-
-
-  </script>
+  
