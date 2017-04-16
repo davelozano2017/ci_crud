@@ -6,19 +6,19 @@
     {
 
       case 'success':
-        echo '<div class="alert alert-success">Successfully Added.</div>';
+        echo '<div class="alert alert-success"><i class="fa fa-check-circle"></i> Successfully Added.</div>';
       break;
 
       case 'delete':
-        echo '<div class="alert alert-danger">Successfully Deleted.</div>';
+        echo '<div class="alert alert-danger"><i class="fa fa-trash"></i> Successfully Deleted.</div>';
       break;
 
       case 'update':
-        echo '<div class="alert alert-info">Successfully Updated.</div>';
+        echo '<div class="alert alert-info"><i class="fa fa-check-circle"></i> Successfully Updated.</div>';
       break;
 
       case 'duplicated':
-        echo '<div class="alert alert-warning">Lastname is already exist.</div>';
+        echo '<div class="alert alert-warning"><i class="fa fa-remove"></i> Lastname is already exist.</div>';
       break;
 
       default:

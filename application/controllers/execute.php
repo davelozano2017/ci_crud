@@ -30,7 +30,7 @@ class execute extends CI_Controller
 
 		if($this->form_validation->run() == FALSE)
 		{
-			$data = array('errors' => validation_errors());
+			$data = array('errors' => validation_errors(' <i class="fa fa-remove"></i> '));
 			$this->session->set_flashdata($data);
 			redirect('home','refresh');
 		}
@@ -72,7 +72,7 @@ class execute extends CI_Controller
 
 		if($this->form_validation->run() == FALSE)
 		{
-			$data = array('errors' => validation_errors());
+			$data = array('errors' => validation_errors(' <i class="fa fa-remove"></i> '));
 			$this->session->set_flashdata($data);
 			redirect('execute/edit/'.$id,'refresh');
 		}
