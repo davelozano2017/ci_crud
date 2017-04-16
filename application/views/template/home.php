@@ -1,9 +1,6 @@
 <div class="col-md-12">
 <?php include 'notification-system.php';
-$errors = $this->session->flashdata('errors');
-if($errors):
-echo '<div class="alert alert-danger">'.$errors.'</div>';
-endif;
+if($errors): echo '<div class="alert alert-danger">'.$errors.'</div>'; endif;
 ?>
   <form method="POST" action="<?php echo base_url()?>execute/insert">
         <div class="form-group">

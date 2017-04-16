@@ -50,6 +50,7 @@ class execute extends CI_Controller
 	public function edit($id)
 	{
 		
+		$data['errors'] = $this->session->flashdata('errors');
 		$id = $this->uri->segment(3);
 		$data['result'] = $this->model->GetId($id);
 		$this->load->view('template/header/header');
